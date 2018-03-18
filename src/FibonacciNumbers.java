@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FibonacciNumbers {
@@ -26,5 +27,22 @@ public class FibonacciNumbers {
         }
 
         return fibbonacciNumbers[length];
+    }
+
+    public static long gcdTwoBigFib(long n, long m){
+        ArrayList<Long> rest = new ArrayList<>();
+        rest.add((long)0);
+        rest.add((long)1);
+        for (int i = 2; i < m * 6; i++){
+            rest.add((rest.get(i - 1) + rest.get(i - 2)) % m);
+            if (rest.get(i) == 1 && rest.get(i - 1) == 0){
+                rest.remove(rest.size()- 1);
+                rest.remove(rest.size()- 1);
+                break;
+            }
+        }
+        long period = rest.size();
+        int num = (int)(n % period);
+        return rest.get(num);
     }
 }
