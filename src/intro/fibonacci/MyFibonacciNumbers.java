@@ -1,7 +1,9 @@
+package intro.fibonacci;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FibonacciNumbers {
+public class MyFibonacciNumbers {
 
     public static int fibonacciUpTo40(){
         Scanner scanner = new Scanner(System.in);

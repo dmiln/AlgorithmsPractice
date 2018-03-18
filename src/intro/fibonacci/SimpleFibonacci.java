@@ -1,3 +1,5 @@
+package intro.fibonacci;
+
 public class SimpleFibonacci {
 
     private static final int MOD = (int)1e9 + 7;

@@ -1,3 +1,5 @@
+package intro.fibonacci;
+
 import java.util.ArrayList;
 
 public class FibonacciList {

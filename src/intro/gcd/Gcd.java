@@ -1,3 +1,5 @@
+package intro.gcd;
+
 import java.util.Scanner;
 
 public class Gcd {
