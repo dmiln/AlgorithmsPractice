@@ -8,6 +8,14 @@ public class CoverLines {
         ArrayList<int[]> vector = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
+        scannThings(vector, scanner, n);
+
+        ArrayList<int[]> sortVector = new CoverLines().sortList(vector);
+
+        coverLines(sortVector);
+    }
+
+    static void scannThings(ArrayList<int[]> vector, Scanner scanner, int n) {
         int i = 0;
         while (scanner.hasNext()) {
             int a = scanner.nextInt();
@@ -18,10 +26,6 @@ public class CoverLines {
                 break;
             }
         }
-
-        ArrayList<int[]> sortVector = new CoverLines().sortList(vector);
-
-        coverLines(sortVector);
     }
 
     private static void coverLines(ArrayList<int[]> list) {
