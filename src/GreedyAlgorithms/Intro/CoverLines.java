@@ -8,12 +8,15 @@ public class CoverLines {
         ArrayList<int[]> vector = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        String[] string = new String[n];
-        Scanner str = new Scanner(System.in);
-        while (n != 0) {
-            --n;
-            String[] parts = str.nextLine().split(" ");
-            vector.add(new int[]{Integer.parseInt(parts[0]), Integer.parseInt(parts[1])});
+        int i = 0;
+        while (scanner.hasNext()) {
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            vector.add(new int[]{a, b});
+            i++;
+            if (i == n){
+                break;
+            }
         }
 
         ArrayList<int[]> sortVector = new CoverLines().sortList(vector);
@@ -25,14 +28,16 @@ public class CoverLines {
         int count = 0;
         ArrayList<Integer> points = new ArrayList<>();
         while (list.size() > 0) {
-            ++count;
             points.add(list.get(0)[1]);
-            for (int j = 1; j < list.size(); j++) {
-                if (list.get(j)[0] < list.get(0)[1]) {
+            for (int j = 1; j < list.size();) {
+                if (list.get(j)[0] <= list.get(0)[1]) {
                     list.remove(j);
+                }else {
+                    ++j;
                 }
             }
             list.remove(0);
+            count++;
         }
         System.out.println(count);
         for (Object obj : points.toArray()) {
@@ -50,6 +55,10 @@ public class CoverLines {
                 }
             }
         }
+        /*for (int[] a: arrayList){
+            System.out.print(Arrays.toString(a));
+        }
+        System.out.println();*/
         return arrayList;
     }
 
