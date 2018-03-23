@@ -10,7 +10,7 @@ public class CoverLines {
         int n = scanner.nextInt();
         scannThings(vector, scanner, n);
 
-        ArrayList<int[]> sortVector = new CoverLines().sortList(vector);
+        ArrayList<int[]> sortVector = new CoverLines().sortBubleList(vector);
 
         coverLines(sortVector);
     }
@@ -22,7 +22,7 @@ public class CoverLines {
             int b = scanner.nextInt();
             vector.add(new int[]{a, b});
             i++;
-            if (i == n){
+            if (i == n) {
                 break;
             }
         }
@@ -33,10 +33,10 @@ public class CoverLines {
         ArrayList<Integer> points = new ArrayList<>();
         while (list.size() > 0) {
             points.add(list.get(0)[1]);
-            for (int j = 1; j < list.size();) {
+            for (int j = 1; j < list.size(); ) {
                 if (list.get(j)[0] <= list.get(0)[1]) {
                     list.remove(j);
-                }else {
+                } else {
                     ++j;
                 }
             }
@@ -47,6 +47,21 @@ public class CoverLines {
         for (Object obj : points.toArray()) {
             System.out.print(obj + " ");
         }
+    }
+
+    private ArrayList<int[]> sortBubleList(ArrayList<int[]> arrayList) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            for (int j = 1; j < arrayList.size(); j++) {
+                if (arrayList.get(j - 1)[1] > arrayList.get(j)[1]) {
+                    Collections.swap(arrayList, j, j - 1);
+                }
+            }
+        }
+        for (int[] a : arrayList) {
+            System.out.print(Arrays.toString(a));
+        }
+        System.out.println();
+        return arrayList;
     }
 
     private ArrayList<int[]> sortList(ArrayList<int[]> arrayList) {

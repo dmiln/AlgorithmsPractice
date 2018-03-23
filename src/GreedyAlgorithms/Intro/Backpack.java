@@ -1,6 +1,7 @@
 package GreedyAlgorithms.Intro;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ class Backpack {
         int weigth = scanner.nextInt();
         CoverLines.scannThings(things, scanner, n);
 
-        ArrayList<int[]> sortThings = new Backpack().sortThings(things);
+        ArrayList<int[]> sortThings = new Backpack().sortBubleThings(things);
 
         System.out.println(fillBackpack(sortThings, weigth));
     }
@@ -44,6 +45,21 @@ class Backpack {
 /*      for (int[] a: things){
             System.out.print(Arrays.toString(a));
         }*/
+        System.out.println();
+        return things;
+    }
+
+    private ArrayList<int[]> sortBubleThings(ArrayList<int[]> things) {
+        for (int i = 0; i < things.size(); i++) {
+            for (int j = 1; j < things.size(); j++) {
+                if ((double) things.get(j)[0] / things.get(j)[1] > (double) things.get(j - 1)[0] / things.get(j - 1)[1]) {
+                    Collections.swap(things, j - 1, j);
+                }
+            }
+        }
+      for (int[] a: things){
+            System.out.print(Arrays.toString(a));
+        }
         System.out.println();
         return things;
     }
