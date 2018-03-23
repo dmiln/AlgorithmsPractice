@@ -33,8 +33,8 @@ public class FillN {
     }
 
     private static boolean canDecompose(int in, int sum, int n){
-        for (int i = in; i < n; i++){
-            if (sum + i <= n - sum){
+        for (int i = 1; i <= n - sum; i++){
+            if (2*in + i <= n - sum){
                 return true;
             }
         }
