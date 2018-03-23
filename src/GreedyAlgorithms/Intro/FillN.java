@@ -8,7 +8,7 @@ public class FillN {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        ArrayList<Integer> list = fillN(n);
+        ArrayList<Integer> list = decompose(n);
         System.out.println(list.size());
         for (int i: list){
             System.out.print(i + " ");
@@ -39,5 +39,21 @@ public class FillN {
             }
         }
         return false;
+    }
+
+    /*
+    Написал более компактный рабочий алгоритм
+     */
+    private static ArrayList<Integer> decompose(int n){
+        ArrayList<Integer> result = new ArrayList<>();
+        int sum = 0;
+        for (int i = 1; i <= n - sum; i++){
+            if (2*i + 1 <= n - sum){
+                result.add(i);
+                sum += i;
+            }
+        }
+        result.add(n - sum);
+        return result;
     }
 }
