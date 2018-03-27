@@ -49,7 +49,7 @@ public class CoverLines {
         }
     }
 
-    private ArrayList<int[]> sortBubleList(ArrayList<int[]> arrayList) {
+    public ArrayList<int[]> sortBubleList(ArrayList<int[]> arrayList) {
         for (int i = 0; i < arrayList.size(); i++) {
             for (int j = 1; j < arrayList.size(); j++) {
                 if (arrayList.get(j - 1)[1] > arrayList.get(j)[1]) {
@@ -57,10 +57,10 @@ public class CoverLines {
                 }
             }
         }
-        for (int[] a : arrayList) {
+/*        for (int[] a : arrayList) {
             System.out.print(Arrays.toString(a));
         }
-        System.out.println();
+        System.out.println();*/
         return arrayList;
     }
 

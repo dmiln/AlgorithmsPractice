@@ -12,7 +12,16 @@ public class Decoding {
         TreeMap<String, String> treeMap = new TreeMap<>();
         int k = scanner.nextInt();
         int l = scanner.nextInt();
-        scanThings(treeMap, scanner, k);
+        int iterator = 0;
+        while (scanner.hasNext()){
+            String a = scanner.next();
+            String b = scanner.next();
+            treeMap.put(a.substring(0,1), b);
+            iterator++;
+            if (iterator == k){
+                break;
+            }
+        }
         String codeString = scanner.next();
         codeString = codeString.substring(0, l);
 
@@ -30,7 +39,7 @@ public class Decoding {
         }
     }
 
-    private static void scanThings(TreeMap<String, String> treeMap, Scanner scanner, int k) {
+/*    private static void scanThings(TreeMap<String, String> treeMap, Scanner scanner, int k) {
         int i = 0;
         while (scanner.hasNext()){
             String a = scanner.next();
@@ -41,7 +50,7 @@ public class Decoding {
                 break;
             }
         }
-    }
+    }*/
 
 
 }
