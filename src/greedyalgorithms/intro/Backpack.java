@@ -1,4 +1,4 @@
-package GreedyAlgorithms.Intro;
+package greedyalgorithms.intro;
 
 import java.util.ArrayList;
 import java.util.Arrays;
