@@ -20,46 +20,46 @@ public class Coding {
         }*/
 
         ArrayList<int[]> freqMas = initString(string);
-        for (int[] i: freqMas){
-            System.out.print((char)i[0] + " ");
+        for (int[] i : freqMas) {
+            System.out.print((char) i[0] + " ");
             System.out.println(i[1]);
         }
-
+        System.out.println();
         System.out.println();
 
         freqMas = new CoverLines().sortBubleList(freqMas);
-        for (int[] i: freqMas){
-            System.out.print((char)i[0] + " ");
+        for (int[] i : freqMas) {
+            System.out.print((char) i[0] + " ");
             System.out.println(i[1]);
         }
     }
 
-    private static Map<Character, Integer> createTree(String str){
+    private static Map<Character, Integer> createTree(String str) {
         TreeMap<Character, Integer> treeMap = new TreeMap<>();
-        for (int i = 0; i < str.length(); i++){
-            if (treeMap.containsKey(str.charAt(i))){
+        for (int i = 0; i < str.length(); i++) {
+            if (treeMap.containsKey(str.charAt(i))) {
                 int k = treeMap.get(str.charAt(i));
                 treeMap.put(str.charAt(i), ++k);
-            }else{
+            } else {
                 treeMap.put(str.charAt(i), 1);
             }
         }
         return treeMap;
     }
 
-    private static ArrayList<int[]> initString(String string){
+    private static ArrayList<int[]> initString(String string) {
         ArrayList<int[]> result = new ArrayList<>();
-        for (int i = 0; i < string.length();){
+        for (int i = 0; i < string.length(); ) {
             int count = 1;
-            for (int j = i + 1; j < string.length(); j++){
-                if (string.charAt(i) == string.charAt(j)){
+            for (int j = i + 1; j < string.length(); j++) {
+                if (string.charAt(i) == string.charAt(j)) {
                     count++;
                     string = string.substring(i, j) + string.substring(j + 1);
                     j--;
                 }
             }
-            result.add(new int[]{string.charAt(i),count});
-            string = string.substring(i+1);
+            result.add(new int[]{string.charAt(i), count});
+            string = string.substring(i + 1);
         }
         return result;
     }
