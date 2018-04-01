@@ -37,6 +37,8 @@ public class Decoding {
                 }
             }
         }
+
+        System.out.println("\n" + "dsjgfdklgdfgdfgdfgdfgggggjtyrtc");
     }
 
 /*    private static void scanThings(TreeMap<String, String> treeMap, Scanner scanner, int k) {

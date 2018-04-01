@@ -11,8 +11,7 @@ public class Coding {
 
         ArrayList<int[]> freqMas = initString(string);
         ArrayList<int[]> frM = initString(string);
-        //showAlphabet(freqMas);
-        //System.out.println();
+        showAlphabet(freqMas);
         ArrayList<Node> tree = createTree(freqMas);
         printCode(frM, tree, string);
     }
@@ -113,6 +112,7 @@ public class Coding {
             System.out.print((char) i[0] + ":");
             System.out.print(i[1] + "  ");
         }
+        System.out.println();
     }
     private static ArrayList<int[]> sortBubleList(ArrayList<int[]> arrayList, int position) {
         for (int i = 0; i < arrayList.size(); i++) {
