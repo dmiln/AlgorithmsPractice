@@ -1,8 +1,11 @@
 package greedyalgorithms.prioityqueue;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PriorityQueue {
+
+    private static ArrayList<Integer> queue = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println(scanInstructions());
@@ -56,10 +59,10 @@ public class PriorityQueue {
     }
 
     private static void extractMax() {
-
+        System.out.println(queue.get(0));
     }
 
     private static void insert(int value) {
-
+        queue.add(value);
     }
 }
