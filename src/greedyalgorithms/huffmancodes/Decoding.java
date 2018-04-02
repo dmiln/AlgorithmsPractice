@@ -41,18 +41,4 @@ public class Decoding {
         System.out.println("\n" + "dsjgfdklgdfgdfgdfgdfgggggjtyrtc");
     }
 
-/*    private static void scanThings(TreeMap<String, String> treeMap, Scanner scanner, int k) {
-        int i = 0;
-        while (scanner.hasNext()){
-            String a = scanner.next();
-            String b = scanner.next();
-            treeMap.put(a.substring(0,1), b);
-            i++;
-            if (i == k){
-                break;
-            }
-        }
-    }*/
-
-
 }
