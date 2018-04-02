@@ -8,7 +8,10 @@ public class PriorityQueue {
     private static ArrayList<Integer> queue = new ArrayList<>();
 
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
         run();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Programm execution time: " + (endTime - startTime));
     }
 
     private static String scanInstructions() {
