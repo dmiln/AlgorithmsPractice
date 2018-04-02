@@ -8,7 +8,7 @@ public class PriorityQueue {
     private static ArrayList<Integer> queue = new ArrayList<>();
 
     public static void main(String[] args) {
-        System.out.println(scanInstructions());
+        run();
     }
 
     private static String scanInstructions() {
