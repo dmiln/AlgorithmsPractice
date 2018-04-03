@@ -6,6 +6,8 @@ public class SortBuble {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(sortBuble(new int[]{9,8,7,6,5,4,3,2,1})));
+        System.out.println(1000000000);
+        System.out.println(Integer.MAX_VALUE);
     }
 
     private static int[] sortBuble(int[] array){
