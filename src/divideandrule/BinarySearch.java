@@ -1,4 +1,4 @@
-package divideandrule.binarysearch;
+package divideandrule;
 
 import java.util.Scanner;
 
