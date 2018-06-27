@@ -97,7 +97,7 @@ public class PointsAndSegments {
         list.set(j, list.get(l));
         list.set(l, empty);
         int k = rightCounter;
-        for (int i = rightCounter; i <= r; i++) {
+        for (int i = rightCounter + 1; i <= r; i++) {
             k = getJ(list, mode, x, k, i);
         }
         empty = list.get(k);
