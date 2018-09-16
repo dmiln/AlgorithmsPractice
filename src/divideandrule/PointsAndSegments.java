@@ -1,119 +1,100 @@
 package divideandrule;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class PointsAndSegments {
+    private int height = 0;
 
     public static void main(String[] args) {
         new PointsAndSegments().run();
     }
 
-    void run() {
+    private void run() {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<int[]> segments = new ArrayList<>();
-        ArrayList<int[]> seg = new ArrayList<>();
         int n = scanner.nextInt();
         int m = scanner.nextInt();
         int[] points = new int[m];
+        int[] leftPoints = new int[n];
+        int[] rightPoints = new int[n];
         for (int i = 0; i < n; i++) {
-            int a = scanner.nextInt();
-            int b = scanner.nextInt();
-            segments.add(new int[]{a, b});
+            leftPoints[i] = scanner.nextInt();
+            rightPoints[i] = scanner.nextInt();
         }
         for (int i = 0; i < m; i++) {
             points[i] = scanner.nextInt();
         }
+        StringBuilder sB = new StringBuilder();
         for (int i : points) {
-            int a = 0, b = 0;
-            ArrayList<int[]> s = new ArrayList<>(segments);
-            quickSort(s, 0, s.size() - 1, 0);
-            a = searchByLeftHandsPoints(s, i);
-            quickSort(s, 0, s.size() - 1, 1);
-            b = searchByRightHandsPoints(s, i);
-            System.out.print((a - b) + " ");
+            int a, b;
+            quicks(leftPoints, 0, n - 1, height);
+            if (height >= Math.log10(leftPoints.length)){
+                Arrays.parallelSort(leftPoints);
+            }
+            height = 0;
+            quicks(rightPoints, 0, n - 1, height);
+            if (height >= Math.log10(rightPoints.length)){
+                Arrays.parallelSort(rightPoints);
+            }
+            a = startsBefore(leftPoints, i);
+            b = endsBefore(rightPoints, i);
+            sB.append(String.valueOf(a - b)).append(" ");
         }
+
+        System.out.println(sB.toString());
     }
 
-    private int searchByRightHandsPoints(ArrayList<int[]> list, int point) {
+    private int startsBefore(int[] a, int point) {
         int i = 0;
-        while (list.size() - 1 >= i && list.get(i)[1] < point) {
+        while (i < a.length && a[i] <= point) {
             i++;
         }
         return i;
     }
 
-    private int searchByLeftHandsPoints(ArrayList<int[]> list, int point) {
+    private int endsBefore(int[] b, int point) {
         int i = 0;
-        while (list.size() - 1 >= i && point >= list.get(i)[0]) {
+        while (i < b.length && b[i] <= point) {
             i++;
         }
         return i;
     }
 
-    private void quickSort(ArrayList<int[]> list, int l, int r, int mode) {
-        if (l > r) {
+    private void quicks(int[] elements, int left, int right, int heigth) {
+        if (heigth >= Math.log(elements.length)){
             return;
         }
-        if (list.size() < 10) {
-            int m = parti(list, l, r, mode);
-            quickSort(list, l, m - 1, mode);
-            quickSort(list, m + 1, r, mode);
-        } else {
-            int[] m = partition(list, l, r, mode);
-            quickSort(list, l, m[0] - 1, mode);
-            quickSort(list, m[1] + 1, r, mode);
+        int i = left, j = right;
+        int pivot = elements[(left + right) / 2];
+        while (i <= j)
+        {
+            while (elements[i] < pivot)
+            {
+                i++;
+            }
+
+            while (elements[j] > pivot)
+            {
+                j--;
+            }
+
+            if (i <= j)
+            {
+                int tmp = elements[i];
+                elements[i] = elements[j];
+                elements[j] = tmp;
+
+                i++;
+                j--;
+            }
+        }
+        if (left < j)
+        {
+            quicks(elements, left, j, ++heigth);
+        }
+        if (i < right)
+        {
+            quicks(elements, i, right, ++heigth);
         }
     }
-
-    private int parti(ArrayList<int[]> list, int l, int r, int mode){
-        int x = list.get(l)[mode];
-        int j = l;
-        for (int i = l + 1; i <= r; i++){
-            j = getJ(list, mode, x, j, i);
-        }
-        int[] empty = list.get(j);
-        list.set(j, list.get(l));
-        list.set(l, empty);
-        return j;
-    }
-
-    private int[] partition(ArrayList<int[]> list, int l, int r, int mode) {
-        int leftCounter = l;
-        int rightCounter = r;
-        int x = list.get(l + (r - l) / 2)[mode];
-        while (leftCounter < list.size() - 1 && list.get(leftCounter)[mode] < x) {
-            leftCounter++;
-        }
-        while (rightCounter > 1 && list.get(rightCounter)[mode] > x) {
-            rightCounter--;
-        }
-        int j = l;
-        for (int i = l + 1; i <= leftCounter; i++) {
-            j = getJ(list, mode, x, j, i);
-        }
-        int[] empty = list.get(j);
-        list.set(j, list.get(l));
-        list.set(l, empty);
-        int k = rightCounter;
-        for (int i = rightCounter + 1; i <= r; i++) {
-            k = getJ(list, mode, x, k, i);
-        }
-        empty = list.get(k);
-        list.set(k, list.get(rightCounter));
-        list.set(rightCounter, empty);
-        return new int[]{j, k};
-    }
-
-    private int getJ(ArrayList<int[]> list, int mode, int x, int j, int i) {
-        if (list.get(i)[mode] <= x) {
-            j++;
-            int[] tmp = list.get(i);
-            list.set(i, list.get(j));
-            list.set(j, tmp);
-        }
-        return j;
-    }
-
 }
